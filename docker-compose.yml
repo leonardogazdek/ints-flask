@@ -1,0 +1,11 @@
+services:
+  flaskapi:
+    image: ints/projekt
+    build: .
+    volumes:
+      - type: bind
+        source: ./mount
+        target: /app/mount
+    platform: linux/arm64
+    ports:
+      - '8000:8000'

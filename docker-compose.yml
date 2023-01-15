@@ -6,6 +6,6 @@ services:
       - type: bind
         source: ./mount
         target: /app/mount
-    platform: linux/arm64
+    platform: linux/amd64
     ports:
       - '8000:8000'

@@ -28,11 +28,12 @@ def predict():
     x = image.img_to_array(img)
     x = x / 255
     x = np.expand_dims(x,axis=0)
-    model.predict(x)
-    a = np.argmax(model.predict(x))
+    predicted = model.predict(x)
+    a = np.argmax(predicted)
+    confidence = np.max(predicted)
     classes = ["Bolt", "Locating Pin", "Nut", "Washer"]
 
-    return jsonify({"category": classes[a]})
+    return jsonify({"category": classes[a], "confidence": float(confidence)})
 
 if __name__ == "__main__":
     HOST_IP = "0.0.0.0"

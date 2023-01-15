@@ -6,8 +6,11 @@ from tensorflow.keras.preprocessing import image
 from PIL import Image
 import numpy as np
 import os
+from flask_cors import CORS
+
 
 app = Flask(__name__)
+CORS(app)
 
 # Load the trained model
 model = load_model(os.path.join("mount", "mech2.h5"))

@@ -7,7 +7,6 @@ from PIL import Image
 import numpy as np
 import os
 
-
 app = Flask(__name__)
 
 # Load the trained model
@@ -25,23 +24,19 @@ def predict():
     file.save(filename)
 
 
-    img=image.load_img(filename,target_size=(224,224))
-    x=image.img_to_array(img)
-    x=x/255
-    x=np.expand_dims(x,axis=0)
+    img = image.load_img(filename,target_size=(224, 224))
+    x = image.img_to_array(img)
+    x = x / 255
+    x = np.expand_dims(x,axis=0)
     model.predict(x)
-    a=np.argmax(model.predict(x))
+    a = np.argmax(model.predict(x))
     classes = ["Bolt", "Locating Pin", "Nut", "Washer"]
 
     return jsonify({"category": classes[a]})
 
-
-
-
-
 if __name__ == "__main__":
     HOST_IP = "0.0.0.0"
     HOST_PORT = 8000
-    print("Attempting to serve on "+str(HOST_IP)+":"+str(HOST_PORT))
+    print(f"Attempting to serve on {HOST_IP}:{HOST_PORT}")
     serve(app, host=HOST_IP, port=HOST_PORT)
     

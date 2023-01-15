@@ -8,7 +8,6 @@ COPY requirements.txt .
 #ako mislimo deployat na arm serveru
 RUN pip install -r requirements.txt
 
-
 COPY api.py .
 
 CMD [ "python", "api.py" ]

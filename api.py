@@ -1,21 +1,9 @@
 from waitress import serve
 from flask import Flask, request, jsonify
 from werkzeug.utils import secure_filename
-
-from tensorflow.keras import applications
-import keras
-from tensorflow.keras.layers import Dense, Activation, Flatten, Conv2D, MaxPooling2D
-from tensorflow.keras.layers import Dropout
-from tensorflow.keras.losses import categorical_crossentropy
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.utils import to_categorical
-from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 from PIL import Image
-
-
-
 import numpy as np
 import os
 
